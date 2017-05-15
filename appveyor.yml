@@ -28,17 +28,17 @@ install:
   - set PATH=C:\Program Files (x86)\NSIS;%PATH%
   - set PATH=C:\MinGW\bin;%PATH%
   - set PATH=C:\MinGW\msys\1.0\bin;%PATH%
-  - .\scripts\ci\appveyor-install.bat
+  - bash .\scripts\ci\install.sh -o win32 -r %TARGET_ARCH%
 
 build: off
 
 test_script:
   - node --version
   - npm --version
-  - cmd: .\scripts\ci\appveyor-test.bat
+  - bash .\scripts\ci\test.sh -o win32 -r %TARGET_ARCH%
 
 deploy_script:
-  - cmd: .\scripts\ci\appveyor-deploy.bat
+  - bash .\scripts\ci\deploy.sh -o win32 -r %TARGET_ARCH%
 
 notifications:
 
